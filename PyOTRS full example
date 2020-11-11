@@ -30,3 +30,5 @@ day = datetime.now(jst_time) - timedelta(days=1)
 ticket_ids = client.ticket_search(TicketCreateTimeNewerDate=day, States=['new'], Queues=['Raw'], OwnerIDs=[1])
 
 print("number of new tickets(younger than 1 day)：" + str(len(ticket_ids)))
+
+https://dev.classmethod.jp/articles/get-ticket-using-pyotrs/
