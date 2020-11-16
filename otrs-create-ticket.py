@@ -3,19 +3,11 @@
 import sys
 from pyotrs import Article, Client, DynamicField, Ticket
 
-URL = "https://url-otrs"
-USER = "user"
-PASSWORD = "pasword"
-variable = '"OTRSTICKET"'
-aspas = '"'
-variableValue = aspas + ticketnumber + aspas
-
-
 if(len(sys.argv) == 3):
 	title = sys.argv[1]
 	body = sys.argv[2]
 
-	client = Client(URL, USER, PASSWORD)
+	client = Client("https://suporte.qosit.com.br", "qospbx", "Qqosit-0215#")
 	client.session_create()
 
 	new_ticket = Ticket.create_basic(
@@ -32,10 +24,6 @@ if(len(sys.argv) == 3):
 
 	ticketnumber = create_ticket['TicketNumber']
 
-	variable = '"OTRSTICKET"'
-	aspas = '"'
-	variableValue = aspas + ticketnumber + aspas
-
 else:
     title = " "
     body  = " "
@@ -45,4 +33,4 @@ if (ticketnumber == " " or (title == " " and body == " ")):
    print("set variable \"RETURN\" \"Ticket não criado, entre em contato com nosso time de suporte!\"")
 else:
    print("set variable \"RETURN\" \"Seu ticket é:\"")
-   print("set variable", variable, variableValue)
+   print("set variable \"OTRSTICKET\" \"" + str(ticketnumber) + "\"")
